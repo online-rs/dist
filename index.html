@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang=“pt-br”>
+
+<head>
+  <meta charset=“utf-8” />
+  <meta content=“width=device-width, initial-scale=1, maximum-scale=1” name=“viewport”>
+  <title>REITER LOG - Certificado</title>
+  <link href=“css/seu-stylesheet.css” rel=“stylesheet” />
+  <script src=“\script.js”></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <header class="container" >
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <img src="https://www.reiterlog.com/portaln/wp-content/uploads/2020/10/logistica-logo.png" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="https://www.reiterlog.com/portaln/" name="inicioc">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.reiterlog.com/portaln/reiter-log/" dataset="inicio" id="membros" name="membrosc">INSTITUCIONAL</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.reiterlog.com/portaln/nossas-solucoes/" name="ataquesc">NOSSAS SOLUÇÕES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.reiterlog.com/portaln/area-de-cobertura/" name="linksc">ÁREA DE COBERTURA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.reiterlog.com/portaln/sustentabilidade/" name="linksc">SUSTENTABILIDADE</a>
+            </li>
+            <li>
+              <button class="btn btn-danger">CONTATO</button>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+
+  <section class="container center entrada" id="sentrada">
+    <div class="">
+      <div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" class="form-control" id="nome" placeholder="Nome Completo" required>
+      </div>
+      <div class="form-group">
+        <label for="cpf">CPF:</label>
+        <input type="text" class="form-control cpf" id="cpf" name="cpf" maxlength="11" placeholder="apenas números" required>
+      </div>
+
+          <div class="center text-center">
+        <button class="btn btn-danger" onclick="video()">ENTRAR</button>
+      </div>
+
+    </div>
+
+  </section>
+  <section class="video center text-center" id="svideo">
+    <div>
+      <div>
+        <h1>VEJO O VÍDEO NA INTEGRA</h1>
+        <h1>AO FINAL O CERTIFICADO SERÁ GERADO</h1>
+      </div>
+      <div class="w-100">
+        <video src="\video\video.mp4" id="player" style="width:100%" class="cplayer" preload></video>
+      <div>
+        <button class="btn btn-danger" onclick="document.getElementById('player').play()">PLAY</button>
+        <button class="btn btn-danger" onclick="document.getElementById('player').pause()">PAUSAR</button>
+        <button class="btn btn-danger" onclick="stop()">REINICIAR</button>
+
+      </div>
+      <div>
+        <h2 id="nomeid">nome completo</h2>
+        <h3>CPF <span id="cpfid">xxxxxx</span></h3>
+      </div>
+      <div class="text-center center">
+        <button id="cetificado" class="btn btn-primary final btn-lg" onclick="gerarcertificado()"> GERAR CERTIFICADO</button>
+      </div>
+      </div>
+    </div>
+  </section>
+  <footer class="bg-danger flex footer">
+    <div class="center text-light bruno">
+      <p>Desenvolvido por Bruno de Oliveira.</p>
+    </div>
+  </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+<script src="http://www.geradorcpf.com/scripts.js"></script>
+    <script src="http://www.geradorcpf.com/jquery-1.2.6.pack.js"></script>
+    <script src="http://www.geradorcpf.com/jquery.maskedinput-1.1.4.pack.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+document.getElementById('svideo').style.display = 'none';
+function stop(){
+   var video = document.getElementById('player');
+   video.currentTime = 0;
+   video.onload();
+   video.onplay();
+}
+
+document.getElementById('player').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+       var certificado = document.getElementById('cetificado');
+       certificado.style.display = 'inline';
+    }
+
+function video(){
+   var vnome = document.getElementById('nome').value;
+   var vcpf = document.getElementById('cpf').value;
+   var abrir = document.getElementById('svideo');
+   if (vnome == '') {
+    var d = document.getElementById('nome');
+    d.style.borderColor = "red";
+   
+  }
+   if (vcpf == '') {
+    var v = document.getElementById('cpf');
+    v.style.borderColor = "red";
+   }
+ 
+   else {
+   document.getElementById('nomeid').innerText = vnome
+   document.getElementById('cpfid').innerText = vcpf
+   abrir.style.display = 'flex';
+   fechar();}
+  }
+
+
+function fechar(){
+  var f = document.getElementById('sentrada')
+  f.style.display = 'none'
+}
+</script>
+
+</body>
+</html>
