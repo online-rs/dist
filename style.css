@@ -1,6 +1,11 @@
 *{
-maring: 0;
-padding:0;
+margin: 0;
+padding: 0;
+}
+.verificador{
+  text-align: center;
+  color: red;
+  display: none;
 }
 
 nav{
@@ -123,4 +128,4 @@ footer{
   }
   .cplayer{
     margin: 0px;
- }
+  }}
