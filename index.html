@@ -56,17 +56,26 @@
       <h5 class="verificador" id="verificador">CPF Incompleto</h5>
 
           <div class="center text-center">
-        <button class="myButton btn-danger" onclick="video()">ENTRAR</button>
+        <button class="myButton btn-danger" onclick="abrirTreinamentos()">ENTRAR</button>
       </div>
 
     </div>
 
   </section>
-  <section class="video center text-center" id="svideo">
+  <section class="container center treinamento" id="treinamentos">
+    <div class="">
+      <h1>Lista de Treinamentos</h1>
+    </div>
+    <div>
+      <button class="myButton" onclick="abrirTreinamento()">Treinamento 1</button>
+    </div>
+  </section>
+
+
+  <section class="video center text-center" id="treinamento1secao">
     <div>
       <div>
-        <h1>VEJO O VÍDEO NA INTEGRA</h1>
-        <h1>AO FINAL O CERTIFICADO SERÁ GERADO</h1>
+        <h1 id="treinamento1titulo">TREINAMENTO Nº 1</h1>
       </div>
       <div class="w-100">
         <video type="video/mp4" src="video\video.mp4" id="player" style="width:100%" class="cplayer" preload></video>
@@ -87,7 +96,7 @@
     </div>
   </section>
   <footer class="bg-danger flex footer">
-    <div class="center text-light bruno">
+    <div class="text-light bruno">
       <p>Desenvolvido por Bruno de Oliveira.</p>
     </div>
   </footer>
@@ -95,7 +104,24 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-document.getElementById('svideo').style.display = 'none';
+
+
+<!-- DEIXAR AS PAGINAS OCULTAS -->
+document.getElementById('treinamento1secao').style.display = 'none';
+document.getElementById('treinamento').style.display = 'none';
+
+
+let opcoes = [
+  {
+    "botao": "TREINAMENT 2 BOTAO",
+    "titulotreinamento": "TREINAMENTO 2",
+    "idtreinamento": 'treinamento2'
+  }
+
+console.log(opcoes.botao);  
+
+
+
 function stop(){
    var video = document.getElementById('player');
    video.currentTime = 0;
@@ -109,10 +135,10 @@ document.getElementById('player').addEventListener('ended',myHandler,false);
        certificado.style.display = 'inline';
     }
 
-function video(){
+function abrirTreinamentos(){
    var vnome = document.getElementById('nome').value;
    var vcpf = document.getElementById('cpf').value;
-   var abrir = document.getElementById('svideo');
+   var abrir = document.getElementById('treinamentos');
    if (vnome == '') {
     var d = document.getElementById('nome');
     d.style.borderColor = "red";
@@ -133,6 +159,19 @@ function video(){
    abrir.style.display = 'flex';
    fechar();}
   }
+
+function ocultarTreinamentos(){
+  var vartreinamento = document.getElementById('treinamentos')
+  vartreinamento.style.display = 'none';
+}
+
+function abrirTreinamento(){
+  var treinamento1 = document.getElementById('treinamento1secao');
+  treinamento1.style.display = 'flex';
+  console.log('Agora vai abrir um treinamento e ocultar a lista');
+  ocultarTreinamentos();
+}
+
 
 
 function fechar(){
