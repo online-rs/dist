@@ -66,9 +66,9 @@
     <div class="">
       <h1>Lista de Treinamentos</h1>
     </div>
-    <div>
-      <button class="myButton" onclick="abrirTreinamento()">Treinamento 1</button>
-    </div>
+    <div class="divbotao" id="listabotao">
+      <button class="myButton" onclick="abrirTreinamento()" id='botaotreinamento'> Treianemtno 1 </button>
+      </div>
   </section>
 
 
@@ -107,33 +107,37 @@
 
 
 <!-- DEIXAR AS PAGINAS OCULTAS -->
+
 document.getElementById('treinamento1secao').style.display = 'none';
-document.getElementById('treinamento').style.display = 'none';
+document.getElementById('treinamentos').style.display = 'none';
 
 
-let opcoes = [
-  {
-    "botao": "TREINAMENT 2 BOTAO",
-    "titulotreinamento": "TREINAMENTO 2",
-    "idtreinamento": 'treinamento2'
-  }
+let opcoes = [{
+    botao: "BOTÃO TREINAMENT 2",
+    titulotreinamento: "TREINAMENTO 2",
+    localvideo:'video2.mp4'
+},
+{botao: "BOTÃO TREINAMENT 3",
+    titulotreinamento: "TREINAMENTO 3",
+    localvideo:'video2.mp4'}
+]
 
-console.log(opcoes.botao);  
-
-
-
-function stop(){
-   var video = document.getElementById('player');
-   video.currentTime = 0;
-   video.onload();
-   video.onplay();
+function alterarTreinamento(){
+  var titulot = document.getElementById('treinamento1titulo');
+  titulot.textContent = opcoes.titulotreinamento;
+  var videot = document.getElementById('player');
+  videot.setAttribute ('src', opcoes.localvideo)
 }
 
-document.getElementById('player').addEventListener('ended',myHandler,false);
-    function myHandler(e) {
-       var certificado = document.getElementById('cetificado');
-       certificado.style.display = 'inline';
-    }
+
+function clonarBotao(x){
+  let botao = document.getElementById('botaotreinamento');
+  let clonar = botao.cloneNode(true);
+  var divPai = botao.parentNode;
+  clonar.textContent = opcoes[x].botao;
+  divPai.insertBefore(clonar, botao);
+}
+
 
 function abrirTreinamentos(){
    var vnome = document.getElementById('nome').value;
@@ -159,6 +163,21 @@ function abrirTreinamentos(){
    abrir.style.display = 'flex';
    fechar();}
   }
+
+
+function stop(){
+   var video = document.getElementById('player');
+   video.currentTime = 0;
+   video.onload();
+   video.onplay();
+}
+
+document.getElementById('player').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+       var certificado = document.getElementById('cetificado');
+       certificado.style.display = 'inline';
+    }
+
 
 function ocultarTreinamentos(){
   var vartreinamento = document.getElementById('treinamentos')
