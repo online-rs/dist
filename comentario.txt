@@ -1,0 +1,9 @@
+function clonarSecaoTreinamento(x){
+  let titulot = document.getElementById('treinamento1secao');
+  let clonar2 = titulot.cloneNode(true);
+  var divPai2 = titulot.parentNode;
+  clonar2.textContent = opcoes[x].b;
+  divPai2.insertBefore(clonar2, titulot);
+  clonar2.id = opcoes[x].identificador;
+  alterarTreinamento(x);
+}

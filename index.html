@@ -67,7 +67,7 @@
       <h1>Lista de Treinamentos</h1>
     </div>
     <div class="divbotao" id="listabotao">
-      <button class="myButton" onclick="abrirTreinamento()" id='botaotreinamento'> Treianemtno 1 </button>
+      <button class="myButton" id='botaotreinamento'> Treinamento 1 </button>
       </div>
   </section>
 
@@ -111,22 +111,35 @@
 document.getElementById('treinamento1secao').style.display = 'none';
 document.getElementById('treinamentos').style.display = 'none';
 
-
 let opcoes = [{
-    botao: "BOTÃO TREINAMENT 2",
-    titulotreinamento: "TREINAMENTO 2",
-    localvideo:'video2.mp4'
-},
-{botao: "BOTÃO TREINAMENT 3",
-    titulotreinamento: "TREINAMENTO 3",
-    localvideo:'video2.mp4'}
+    b: "Segurança de Trabalho",
+    titulotreinamento: "Treinamento de Segurança do Trabalho",
+    localvideo:'video2.mp4',
+    identificador: 'seguranca',
+    bt: "botaoseg"
+}, 
+{
+    b: "Jornada de Trabalho",
+    titulotreinamento: "Treinamento de Jornada de Trabalho",
+    localvideo:'video2.mp4',
+    identificador: 'jornada',
+    bt: "botaojor"
+}
 ]
 
-function alterarTreinamento(){
-  var titulot = document.getElementById('treinamento1titulo');
-  titulot.textContent = opcoes.titulotreinamento;
+function alterarTreinamento(x){
+  var alterarTitulo = document.getElementById('treinamento1titulo');
+  alterarTitulo.textContent = opcoes[x].titulotreinamento;
   var videot = document.getElementById('player');
-  videot.setAttribute ('src', opcoes.localvideo)
+  videot.setAttribute ('src', opcoes[x].localvideo)
+}
+
+function clonarSecaoTreinamento(x){
+  let titulot = document.getElementById('treinamento1secao');
+  let clonar2 = titulot.cloneNode(true);
+  var divPai2 = titulot.parentNode;
+  divPai2.insertBefore(clonar2, titulot);
+  clonar2.id = opcoes[x].identificador;
 }
 
 
@@ -134,8 +147,33 @@ function clonarBotao(x){
   let botao = document.getElementById('botaotreinamento');
   let clonar = botao.cloneNode(true);
   var divPai = botao.parentNode;
-  clonar.textContent = opcoes[x].botao;
+  clonar.textContent = opcoes[x].b;
   divPai.insertBefore(clonar, botao);
+  clonar.id = opcoes[x].bt;
+
+}
+
+opcoes.forEach(function(nome, i) {
+    clonarBotao(i);
+})
+
+document.addEventListener("click", criar);
+
+function criar(target){
+  nomeBotao = event.target.id;
+  var x = 1;
+  
+  if (nomeBotao == opcoes[x].bt){
+    alterarTreinamento(x);
+    abrirTreinamento();
+  }
+  if (nomeBotao == opcoes[0].bt){
+    alterarTreinamento(0);
+    abrirTreinamento();
+  }
+  if (nomeBotao == 'botaotreinamento'){
+    abrirTreinamento();
+  }
 }
 
 
@@ -187,7 +225,6 @@ function ocultarTreinamentos(){
 function abrirTreinamento(){
   var treinamento1 = document.getElementById('treinamento1secao');
   treinamento1.style.display = 'flex';
-  console.log('Agora vai abrir um treinamento e ocultar a lista');
   ocultarTreinamentos();
 }
 
