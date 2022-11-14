@@ -11,6 +11,8 @@
 </head>
 
 <body>
+<?php include('conecta.php')?>
+
   <header class="container" >
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
@@ -95,8 +97,8 @@
       </div>
     </div>
   </section>
-  <footer class="bg-danger flex footer">
-    <div class="text-light bruno">
+  <footer class="bg-danger navbar-fixed-bottom">
+    <div class="text-light bruno ">
       <p>Desenvolvido por Bruno de Oliveira.</p>
     </div>
   </footer>
@@ -116,15 +118,25 @@ let opcoes = [{
     titulotreinamento: "Treinamento de Segurança do Trabalho",
     localvideo:'video2.mp4',
     identificador: 'seguranca',
-    bt: "botaoseg"
+    bt: "botaoseg",
+    indice:"0"
 }, 
 {
     b: "Jornada de Trabalho",
     titulotreinamento: "Treinamento de Jornada de Trabalho",
     localvideo:'video2.mp4',
     identificador: 'jornada',
-    bt: "botaojor"
-}
+    bt: "botaojor",
+    indice:"1"
+},
+{
+  b: "Como usar a Plataforma",
+  titulotreinamento: "Treinamento de Como usar a Plataforma",
+  localvideo:'video2.mp4',
+  identificador: 'plataforma',
+  bt: "plataforma",
+  indice:"2"
+  }
 ]
 
 function alterarTreinamento(x){
@@ -159,21 +171,27 @@ opcoes.forEach(function(nome, i) {
 
 document.addEventListener("click", criar);
 
+
 function criar(target){
   nomeBotao = event.target.id;
-  var x = 1;
-  
-  if (nomeBotao == opcoes[x].bt){
-    alterarTreinamento(x);
+
+  if (nomeBotao == 'botaotreinamento'){
     abrirTreinamento();
   }
+
   if (nomeBotao == opcoes[0].bt){
     alterarTreinamento(0);
     abrirTreinamento();
   }
-  if (nomeBotao == 'botaotreinamento'){
+  if (nomeBotao == opcoes[1].bt){
+    alterarTreinamento(1);
     abrirTreinamento();
   }
+  if (nomeBotao == opcoes[2].bt){
+    alterarTreinamento(2);
+    abrirTreinamento();
+  }
+
 }
 
 

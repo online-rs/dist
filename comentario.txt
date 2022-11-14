@@ -7,3 +7,29 @@ function clonarSecaoTreinamento(x){
   clonar2.id = opcoes[x].identificador;
   alterarTreinamento(x);
 }
+
+
+
+
+document.addEventListener("click", criar);
+
+function criar(target){
+  nomeBotao = event.target.id;
+  var x = 1;
+  if (nomeBotao == 'botaotreinamento'){
+    abrirTreinamento();
+  }
+
+  if (nomeBotao == opcoes[x].bt){
+    alterarTreinamento(x);
+    abrirTreinamento();
+  }
+  if (nomeBotao == opcoes[0].bt){
+    alterarTreinamento(0);
+    abrirTreinamento();
+  }
+
+}
+
+
+<?php include('conecta.php') ?>
