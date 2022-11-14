@@ -11,7 +11,9 @@
 </head>
 
 <body>
-<?php include('conecta.php')?>
+<?
+php include('conecta.php')
+?>
 
   <header class="container" >
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -92,7 +94,7 @@
         <h3>CPF <span id="cpfid">xxxxxx</span></h3>
       </div>
       <div class="text-center center">
-        <button id="cetificado" class="btn btn-primary final btn-lg"> GERAR CERTIFICADO</button>
+        <button id="cetificado" class="btn btn-primary final btn-lg" onclick="abrirObrigado()"> GERAR CERTIFICADO</button>
       </div>
       </div>
     </div>
@@ -264,6 +266,12 @@ function fundo(x){
     v.style.borderColor = "red";
   }
 }
+
+function abrirObrigado(){
+  window.open('obrigado.html');
+
+}
+
 </script>
 
 </body>
