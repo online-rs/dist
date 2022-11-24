@@ -33,3 +33,28 @@ function criar(target){
 
 
 <?php include('conecta.php') ?>
+
+
+function criar(target){
+  nomeBotao = event.target.id;
+  console.log()
+
+  if (nomeBotao == 'botaotreinamento'){
+    abrirTreinamento();
+  }
+}
+
+
+
+  if (nomeBotao == opcoes[0].bt){
+    alterarTreinamento(0);
+    abrirTreinamento();
+  }
+  if (nomeBotao == opcoes[1].bt){
+    alterarTreinamento(1);
+    abrirTreinamento();
+  }
+  if (nomeBotao == opcoes[2].bt){
+    alterarTreinamento(2);
+    abrirTreinamento();
+  }

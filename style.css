@@ -132,6 +132,7 @@ footer{
   }
   .myButton, .btn {
     font-size: 3rem;
+    width: 70vw;
   }
   .video{
     height: 95vh;

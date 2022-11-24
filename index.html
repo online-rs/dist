@@ -115,7 +115,16 @@ php include('conecta.php')
 document.getElementById('treinamento1secao').style.display = 'none';
 document.getElementById('treinamentos').style.display = 'none';
 
-let opcoes = [{
+const opcoes = [
+{
+    b: "Jurídico",
+    titulotreinamento: "Treinamento Jurídico",
+    localvideo:'video2.mp4',
+    identificador: 'juridico',
+    bt: "botaojur",
+    indice:"3"
+},  
+{
     b: "Segurança de Trabalho",
     titulotreinamento: "Treinamento de Segurança do Trabalho",
     localvideo:'video2.mp4',
@@ -140,6 +149,7 @@ let opcoes = [{
   indice:"2"
   }
 ]
+
 
 function alterarTreinamento(x){
   var alterarTitulo = document.getElementById('treinamento1titulo');
@@ -176,26 +186,31 @@ document.addEventListener("click", criar);
 
 function criar(target){
   nomeBotao = event.target.id;
-
-  if (nomeBotao == 'botaotreinamento'){
+  if (nomeBotao =='botaotreinamento'){
+    console.log("treinamento1titulo");
     abrirTreinamento();
-  }
-
+  } 
   if (nomeBotao == opcoes[0].bt){
+    console.log(nomeBotao);
     alterarTreinamento(0);
     abrirTreinamento();
   }
   if (nomeBotao == opcoes[1].bt){
+    console.log(nomeBotao);
     alterarTreinamento(1);
     abrirTreinamento();
   }
   if (nomeBotao == opcoes[2].bt){
+    console.log(nomeBotao);
     alterarTreinamento(2);
     abrirTreinamento();
   }
-
+  if (nomeBotao == opcoes[3].bt){
+    console.log(nomeBotao);
+    alterarTreinamento(3);
+    abrirTreinamento();
+  }
 }
-
 
 function abrirTreinamentos(){
    var vnome = document.getElementById('nome').value;
@@ -268,7 +283,7 @@ function fundo(x){
 }
 
 function abrirObrigado(){
-  window.open('obrigado.html');
+  window.open('obrigado.html', '_self');
 
 }
 
