@@ -104,6 +104,27 @@ footer{
 	top:1px;
 }
 
+.page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+  width: 29.7cm;
+  height: 21cm;
+  background-image: url('certificado.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 29.7cm 21cm;
+}
+.nomeDoFuncionario{
+  position: relative;
+  top: 15.8cm;
+  left: 5cm;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
     
 @media screen and (max-width: 1200px){
   *{
